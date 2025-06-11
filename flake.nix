@@ -68,14 +68,18 @@
           root = mkOption {
             type = path;
             default = "/var/www";
+            description = "Default root directory for all Kirby instances. Can be overridden per instance.";
           };
           timezone = mkOption {
             type = str;
             default = "UTC";
+            description = "Sets the PHP-FPM date.timezone setting for all instances. Can be overridden per instance.";
           };
           package = mkOption {
             type = nullOr package;
             default = null;
+            description = "Default Kirby package used by all instances. Can be overridden per instance.";
+            example = "pkgs.kirby4";
           };
         };
         sites = mkOption {
@@ -84,26 +88,34 @@
               enable = mkOption {
                 type = bool;
                 default = true;
+                description = "Whether to enable this Kirby instance.";
               };
               hostName = mkOption {
                 type = str;
                 default = name;
+                description = "Hostname for the instance. Defaults to the instance name. A 'www.' alias is automatically added.";
+                example = "getkirby.com";
               };
               serverAliases = mkOption {
                 type = listOf str;
                 default = [];
+                description = "List of additional domain names. A 'www.' alias is automatically added for each entry.";
               };
               root = mkOption {
                 type = path;
                 default = "${cfg.default.root}/${name}";
+                description = "Root directory for this Kirby instance.";
               };
               timezone = mkOption {
                 type = str;
                 default = cfg.default.timezone;
+                description = "PHP-FPM date.timezone setting for this instance.";
               };
               package = mkOption {
                 type = package;
                 default = cfg.default.package;
+                description = "Kirby package used by this instance.";
+                example = "pkgs.kirby4";
               };
             };
           }));
@@ -116,7 +128,7 @@
             isSystemUser = true;
             createHome = true;
             homeMode = "2775";
-            home = "${root}";
+            home = root;
             group = name;
         }) cfg.sites;
         
