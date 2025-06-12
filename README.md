@@ -22,7 +22,7 @@ Add Kirby to your flake inputs and ensure you're following your own `nixpkgs`.
 inputs = {
   nixpkgs.url = "github:NixOs/nixpkgs/<your-version>";
   inputs.kirby-cms = {
-    url = "github:your-user/kirby-cms-flake";
+    url = "github:277292/kirby-flake";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 };
@@ -101,8 +101,7 @@ For more description and examples, see the ```flake.nix```
 
 ### Disclaimer
 This flake is only a wrapper for integrating Kirby CMS into Nix.  
-I am not affiliated with the Kirby project, and this repository is not endorsed by or connected to the creators of Kirby.  
-For licensing, usage terms, and commercial support, see [getkirby.com](https://getkirby.com/).
+I am not affiliated with the Kirby project, and this repository is not endorsed by or connected to the creators of Kirby. For licensing, usage terms, and commercial support, see [getkirby.com](https://getkirby.com/).
 
 ### Contributing
 Feel free to open an issue or submit a pull request if you encounter a problem or have an idea for improvement — contributions related to this flake are very welcome.
