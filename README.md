@@ -30,8 +30,8 @@ inputs = {
 
 Load the module and overlay:
 ```nix
-#flake.nix
-outputs = { self, nixpkgs, kirby-cms, ... } @ inputs: {
+# flake.nix
+outputs = {self, nixpkgs, kirby-cms, ...} @ inputs: {
   nixosConfigurations.joes-server = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
@@ -41,7 +41,7 @@ outputs = { self, nixpkgs, kirby-cms, ... } @ inputs: {
       kirby-cms.nixosModules.kirby
 
       # Overlay to make Kirby packages available
-      ({ config, pkgs, ... }: {
+      ({config, pkgs, ...}: {
         nixpkgs.overlays = [kirby-cms.overlays.kirby];
 
         # Explicitly allow Kirby, as it is unfree
@@ -70,8 +70,11 @@ This will create two Kirby instances in ```/var/www/getKirby.com``` and ```/var/
 
 To disable SSL and ACME (e.g. for local development):
 ```nix
+# configuration.nix
 {config, lib, ...}: let cfg = config.kirby-cms; in {
-  services.nginx.virtualHosts."${cfg.<site-name>.hostName}" = {
+  kirby-cms = {...};
+
+  services.nginx.virtualHosts."${cfg.sites.<name>.hostName}" = {
     forceSSL = lib.mkForce false;
     enableACME = lib.mkForce false;
   };
