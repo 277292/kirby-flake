@@ -101,7 +101,7 @@ To disable SSL and ACME (e.g. for local development):
 
 ```kirby-cms.sites.<name>.package = cfg.default.package```
 
-For more description and examples, see the ```flake.nix```
+For more description and examples, see the [flake.nix](https://github.com/277292/kirby-flake/blob/main/flake.nix)
 
 ### Disclaimer
 This flake is only a wrapper for integrating Kirby CMS into Nix.  
