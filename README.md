@@ -56,13 +56,14 @@ outputs = {self, nixpkgs, kirby-cms, ...}: {
 ```nix
 # configuration.nix
 {config, pkgs, ...}: {
+  # Ensure that a default package is set and/or specify one per instance.
   kirby-cms.default.package = pkgs.kirby4;
   kirby-cms.sites = {
     "getKirby.com" = {};
     example2 = {};
   };
 
-  # Make sure you enable nginx
+  # Ensure that nginx is enabled.
   services.nginx.enable = true;
 };
 ```

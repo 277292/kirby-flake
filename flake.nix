@@ -158,7 +158,7 @@
         services.nginx.virtualHosts = mapAttrs (name: {enable, hostName, serverAliases,  ...}: mkIf enable {
           forceSSL = true;
           enableACME = true;
-          serverAliases = ["www.${hostName}"] ++ serverAliases;
+          serverAliases = ["www.${hostName}"] ++ serverAliases ++ map(domain: "www.${domain}") serverAliases;
           root = config.users.users.${name}.home;
           extraConfig = ''
             index index.php index.html;
