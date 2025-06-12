@@ -40,7 +40,7 @@ outputs = { self, nixpkgs, kirby-cms, ... } @ inputs: {
       # Kirby CMS module
       kirby-cms.nixosModules.kirby
 
-      # custom overlay to make Kirby packages available
+      # Overlay to make Kirby packages available
       ({ config, pkgs, ... }: {
         nixpkgs.overlays = [kirby-cms.overlays.kirby];
 
@@ -56,7 +56,7 @@ outputs = { self, nixpkgs, kirby-cms, ... } @ inputs: {
 ```nix
 # configuration.nix
 {pkgs, ...}: {
-  kirby.cms.default.package = pkgs.kirby4;
+  kirby-cms.default.package = pkgs.kirby4;
   kirby-cms.sites = {
     "getKirby.com" = {};
     example2 = {};
