@@ -4,7 +4,7 @@ Just a simple flake to provide the CMS [Kirby](https://github.com/getkirby/kirby
   > Kirby is not free to use. To use Kirby in production, you need to purchase a [license](https://getkirby.com/license).
 
 ## What this flake does
-  - Creates a user and group for each instance
+  - Creates a system user and group for each instance
   - Mounts the package from your nix-store into the root directory (e.g. ```/var/www/<name>/kirby```) as read-only
   - Preconfigures the ```services.nginx.virtualHosts.<hostName>``` entry for each instance
   - Preconfigures and starts a dedicated PHP-FPM pool for each instance
@@ -31,7 +31,7 @@ inputs = {
 Load the module and overlay:
 ```nix
 # flake.nix
-outputs = {self, nixpkgs, kirby-cms, ...} @ inputs: {
+outputs = {self, nixpkgs, kirby-cms, ...}: {
   nixosConfigurations.joes-server = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
@@ -55,7 +55,7 @@ outputs = {self, nixpkgs, kirby-cms, ...} @ inputs: {
 ### Configuration
 ```nix
 # configuration.nix
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   kirby-cms.default.package = pkgs.kirby4;
   kirby-cms.sites = {
     "getKirby.com" = {};
@@ -81,24 +81,24 @@ To disable SSL and ACME (e.g. for local development):
 }
 ```
 
-### Options (with default)
+### Options *with defaults*
 ```kirby-cms.default.root = "/var/www"```
 
-```kirby.cms.default.timezone = "UTC"```
+```kirby-cms.default.timezone = "UTC"```
 
-```kirby.cms.default.package = null```
+```kirby-cms.default.package = null```
 
-```kirby.cms.sites.<name>.enable = true```
+```kirby-cms.sites.<name>.enable = true```
 
-```kirby.cms.sites.<name>.hostName = <name>```
+```kirby-cms.sites.<name>.hostName = <name>```
 
-```kirby.cms.sites.<name>.serverAliases = []```
+```kirby-cms.sites.<name>.serverAliases = []```
 
-```kirby.cms.sites.<name>.root = "${cfg.default.root}/<name>"```
+```kirby-cms.sites.<name>.root = "${cfg.default.root}/<name>"```
 
-```kirby.cms.sites.<name>.timezone = cfg.default.timezone```
+```kirby-cms.sites.<name>.timezone = cfg.default.timezone```
 
-```kirby.cms.sites.<name>.package = cfg.default.package```
+```kirby-cms.sites.<name>.package = cfg.default.package```
 
 For more description and examples, see the ```flake.nix```
 
