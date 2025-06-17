@@ -50,15 +50,15 @@
       };
 
       kirby5 = fetch {
-        version = "5.0.0-rc.4";
-        rev = "2e17f85e671dccb631e7c250ca618fe85fb8ae6f";
-        sha256 = "sha256-YdpimHDdOPRQtVH7j8GYHSZdc+PZDVcOb8O9Gf9AzqE=";
+        version = "5.0.0-rc.5";
+        rev = "b0de6ab333e05fe491f8eb564d9f634749c90be0";
+        sha256 = "sha256-BIz5P7KFL/1QoizNN5vsLB/Vozxk83k3pg+07SSJfQM=";
         phpPackage = php84;
       };
     };
   
     nixosModules.kirby = {config, lib, pkgs, ...}: let
-      inherit (lib) mkOption mkIf mapAttrs mapAttrsToList listToAttrs;
+      inherit (lib) mkOption mkIf mapAttrs mapAttrs' filterAttrs;
       inherit (lib.types) submodule attrsOf listOf nullOr bool str path package;
 
       cfg = config.kirby-cms;
@@ -123,7 +123,7 @@
       };
 
       config = {
-        users.users = mapAttrs (name: {enable, hostName, root,...}: mkIf enable {
+        users.users = mapAttrs (name: {enable, hostName, root, ...}: mkIf enable {
             description = "Kirby Instance for ${hostName}";
             isSystemUser = true;
             createHome = true;
@@ -155,7 +155,7 @@
           '';
         }) cfg.sites;
         
-        services.nginx.virtualHosts = mapAttrs (name: {enable, hostName, serverAliases,  ...}: mkIf enable {
+        services.nginx.virtualHosts = mapAttrs (name: {enable, hostName, serverAliases, ...}: mkIf enable {
           forceSSL = true;
           enableACME = true;
           serverAliases = ["www.${hostName}"] ++ serverAliases ++ map(domain: "www.${domain}") serverAliases;
@@ -177,14 +177,14 @@
           '';
         }) cfg.sites;
 
-        fileSystems = listToAttrs (mapAttrsToList (name: {enable, root, package, ...}: {
+        fileSystems = mapAttrs' (name: {root, package, ...}: {
           name = "${root}/kirby"; # config.users.users.${name}.home doesnt work here cause infinite recursion encountered
           value = {
             device = "${package}";
             fsType = "none";
             options = ["bind" "ro"];
           };
-        }) cfg.sites);
+        }) (filterAttrs (_name: {enable, ...}: enable) cfg.sites);
       };
     };
   };
