@@ -21,7 +21,7 @@ Add Kirby to your flake inputs and ensure you're following your own `nixpkgs`.
 # flake.nix
 inputs = {
   nixpkgs.url = "github:NixOs/nixpkgs/<your-version>";
-  inputs.kirby-cms = {
+  kirby-cms = {
     url = "github:277292/kirby-flake";
     inputs.nixpkgs.follows = "nixpkgs";
   };
