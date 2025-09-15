@@ -1,4 +1,4 @@
-Just a simple flake to provide the CMS [Kirby](https://github.com/getkirby/kirby) as a NixOS module, including packages for the latest versions of Kirby 3, 4, and 5.
+Just a simple flake to provide the CMS [Kirby](https://github.com/getkirby/kirby) as a Nix module, including packages for the latest versions of Kirby 3, 4, and 5.
 
   > [!note]
   > Kirby is not free to use. To use Kirby in production, you need to purchase a [license](https://getkirby.com/license).
