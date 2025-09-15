@@ -83,25 +83,37 @@ To disable SSL and ACME (e.g. for local development):
 ```
 
 ### Options *with defaults*
-```kirby-cms.default.root = "/var/www"```
+`kirby-cms.default.root = "/var/www"`
 
-```kirby-cms.default.timezone = "UTC"```
+`kirby-cms.default.timezone = "UTC"`
 
-```kirby-cms.default.package = null```
+`kirby-cms.default.package = null`
 
-```kirby-cms.sites.<name>.enable = true```
+`kirby-cms.sites.<name>.enable = true`
 
-```kirby-cms.sites.<name>.hostName = <name>```
+`kirby-cms.sites.<name>.hostName = <name>`
 
-```kirby-cms.sites.<name>.serverAliases = []```
+`kirby-cms.sites.<name>.serverAliases = []`
 
-```kirby-cms.sites.<name>.root = "${cfg.default.root}/<name>"```
+`kirby-cms.sites.<name>.root = "${cfg.default.root}/<name>"`
 
-```kirby-cms.sites.<name>.timezone = cfg.default.timezone```
+`kirby-cms.sites.<name>.timezone = cfg.default.timezone`
 
-```kirby-cms.sites.<name>.package = cfg.default.package```
+`kirby-cms.sites.<name>.package = cfg.default.package`
 
 For more description and examples, see the [flake.nix](https://github.com/277292/kirby-flake/blob/main/flake.nix)
+
+### Use other versions
+`nix run nixpkgs#nix-prefetch-github -- getKirby kirby --rev 5.1.0-rc.1`
+
+```nix
+kirby-cms.default.packages = pkgs.kirby_fetch {
+  version = "5.1.0-rc.1";
+  rev = "29b38b4b6cf08ddcbff7b879297ee84060609916";
+  sha256 = "sha256-yeHSKM+n77AfdaE0TdAgIZObs/rP59g+bdS4s5VeSfU=";
+  phpPackage = pkgs.php84;
+};
+```
 
 ### Disclaimer
 This flake is only a wrapper for integrating Kirby CMS into Nix.  

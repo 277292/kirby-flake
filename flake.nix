@@ -7,10 +7,10 @@
     ...
   }: {
     overlays.kirby = final: _prev: let
-      inherit (final) fetch fetchFromGitHub php83 php84;
+      inherit (final) kirby_fetch fetchFromGitHub php83 php84;
       inherit (final.stdenv) mkDerivation;
     in {
-      fetch = {
+      kirby_fetch = {
         version,
         rev,
         sha256,
@@ -45,21 +45,21 @@
         };
 
       # nix run nixpkgs#nix-prefetch-github -- getKirby kirby --rev <version>
-      kirby3 = fetch {
+      kirby3 = kirby_fetch {
         version = "3.10.1.2";
         rev = "dba5ea8ea7fd468190a401cc37d6032ec717cac8";
         sha256 = "sha256-sEPSquK1m3VtN3H1LJ53UY3CO9RLDv9GhYPTRSNSCEE=";
         phpPacakge = php83;
       };
 
-      kirby4 = fetch {
+      kirby4 = kirby_fetch {
         version = "4.8.0";
         rev = "5292c17832dd34b0e5f3e98dea837a357ef037b6";
         sha256 = "sha256-eIkuXpNS0sB29IqGM/L2OTrTRhciSBnDudfn9960Pzs=";
         phpPackage = php84;
       };
 
-      kirby5 = fetch {
+      kirby5 = kirby_fetch {
         version = "5.1.0";
         rev = "8777cfa26f700582374462a6883caccd86fd0cbc";
         sha256 = "sha256-Lg9ejudP0LCkwa3rk6pKqGyV0q6r495mU0rnZhamtMM=";
