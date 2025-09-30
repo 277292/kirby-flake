@@ -60,9 +60,9 @@
       };
 
       kirby5 = kirby_fetch {
-        version = "5.1.1";
-        rev = "fb11f5e3ec422e948fb1a52f16988335bb3489b4";
-        sha256 = "sha256-qN2geT845Tfq7DBUoFnsfFVqIaKzhgpROc05DX4gcxw=";
+        version = "5.1.2";
+        rev = "0f916becac8a2bc824a72cdb70066ed56b50c0f4";
+        sha256 = "sha256-C1JpSglsRQDv/zkcoJpykVDc/3if5N4t7gN+uk55y7k=";
         phpPackage = php84;
       };
     };
