@@ -13,7 +13,7 @@
       kirby_fetch = {
         version,
         rev,
-        sha256,
+        hash,
         phpPackage,
       }:
         mkDerivation {
@@ -22,7 +22,7 @@
           src = fetchFromGitHub {
             owner = "getkirby";
             repo = "kirby";
-            inherit rev sha256;
+            inherit rev hash;
           };
 
           installPhase = ''

@@ -107,10 +107,10 @@ For more description and examples, see the [flake.nix](https://github.com/277292
 `nix run nixpkgs#nix-prefetch-github -- getKirby kirby --rev 5.1.0-rc.1`
 
 ```nix
-kirby-cms.default.packages = pkgs.kirby_fetch {
+kirby-cms.default.packages = pkgs.kirby_fetch rec {
   version = "5.1.0-rc.1";
-  rev = "29b38b4b6cf08ddcbff7b879297ee84060609916";
-  sha256 = "sha256-yeHSKM+n77AfdaE0TdAgIZObs/rP59g+bdS4s5VeSfU=";
+  rev = version;
+  hash = "sha256-yeHSKM+n77AfdaE0TdAgIZObs/rP59g+bdS4s5VeSfU=";
   phpPackage = pkgs.php84;
 };
 ```
