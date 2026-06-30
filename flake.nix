@@ -45,24 +45,24 @@
         };
 
       # nix run nixpkgs#nix-prefetch-github -- getKirby kirby --rev <version>
-      kirby3 = kirby_fetch {
+      kirby3 = kirby_fetch rec {
         version = "3.10.1.2";
-        rev = "dba5ea8ea7fd468190a401cc37d6032ec717cac8";
-        sha256 = "sha256-sEPSquK1m3VtN3H1LJ53UY3CO9RLDv9GhYPTRSNSCEE=";
+        rev = version;
+        hash = "sha256-sEPSquK1m3VtN3H1LJ53UY3CO9RLDv9GhYPTRSNSCEE=";
         phpPacakge = php83;
       };
 
-      kirby4 = kirby_fetch {
-        version = "4.9.2";
-        rev = "06975fe459e24c3b106370394b230d4190a5a18f";
-        sha256 = "sha256-+K/wyGP4e2a20fh7oXaNXg1/WJ3Crf/rpW1KZSxbELc=";
+      kirby4 = kirby_fetch rec {
+        version = "4.9.4";
+        rev = version;
+        hash = "sha256-VphZyjiq7LVGVXIwpWH2m/jO2dAy6fT06sOhNGvgORM=";
         phpPackage = php84;
       };
 
-      kirby5 = kirby_fetch {
+      kirby5 = kirby_fetch rec {
         version = "5.4.2";
-        rev = "591dd368e45ae46b34274ca379d4e6d0513b5bf7";
-        sha256 = "sha256-5wJeyYbxJ1NwLsCloTfHynWj8Z1lzpWcM4wKQ5pd2MY=";
+        rev = version;
+        hash = "sha256-dP1Oi7EdKGsYLDbWlD+XGCJcPk05lutMAxDSW0ssvqQ=";
         phpPackage = php84;
       };
     };
