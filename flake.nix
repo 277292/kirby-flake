@@ -60,9 +60,9 @@
       };
 
       kirby5 = kirby_fetch rec {
-        version = "5.6.0";
+        version = "5.6.1";
         rev = version;
-        hash = "sha256-wcIUBgnh76oJVgiSRAX9f0WibaInOx47TN1Fu1dKkTM=";
+        hash = "sha256-NLhsL7jazoyOt0KOrO2RTSTPQtzkWteWTfkDoIK10Ys=";
         phpPackage = php84;
       };
 
