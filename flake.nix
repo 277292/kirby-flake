@@ -55,21 +55,21 @@
       kirby4 = kirby_fetch rec {
         version = "4.9.7";
         rev = version;
-        hash = "sha256-uFONoS+m0E2VC8XofJKCjhbycIU6S1R93tGxTrcazYk=";
+        hash = "sha256-DXAEiY71j8JOa09aF4gS9p0AYRgUaxBwZJntvYg7OpE=";
         phpPackage = php84;
       };
 
       kirby5 = kirby_fetch rec {
-        version = "5.6.3";
+        version = "5.6.4";
         rev = version;
-        hash = "sha256-jsNv7PtZm8r1g9a+xsK/AJdrrIvlakGDkmhTzRgUbfY=";
+        hash = "sha256-RHcyL9EWfV0psiITbEYeRUsG7gJAJaAbLofSc6bDNCA=";
         phpPackage = php84;
       };
 
       kirby6 = kirby_fetch rec {
-        version = "6.0.0-beta.3";
+        version = "6.0.0";
         rev = version;
-        hash = "sha256-46/+9Mtd4SY4UWg72/5Us40gmbi+BX4GI4YD8nRzEOg=";
+        hash = "sha256-t5Wb/6YbeyxI2PCP4kDSR9ytlwH2xsAMAa+OXHm97Zw=";
         phpPackage = php84;
       };
     };
